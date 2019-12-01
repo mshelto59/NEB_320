@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>NEB e-Commerce</title>
+	<link type="text/css" href="../common/styles.css" rel="stylesheet" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+</head>
+<body>
+	
+	<div class="grid-container">
+		<div class ="header">
+			<h1>Burlington Bikes</h1>
+		</div>
+	 
+		<!--Side Navigation-->
+		<div class="left">		
+			<div class="sidenav"> 
+				<a href="../index.htm">Home</a>
+				<a href="./cart.htm">Cart</a>
+				<a href="#">Payment</a>
+				<a href="./login.htm">Login</a>
+			</div>
+		</div>
+		
+		<div class="middle1" style="background-color:#ffffff;">
+			<table id="main_tbl">
+				<tr>
+					<td id="title" colspan="3" class="row_ht">
+						Payment Information
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<form name="payment" action="feedback.htm" method="post"><!-- I NEED SOMEONE TO CHANGE THIS SO THAT THE FORM CAN COMMUNICATE WITH THE DATA BASE-->
+							<table id="nested_form">
+								<!--start actual form structure here-->
+								<tr>
+									<td>First Name on Card:</td>
+									<td>
+										<input name="fn" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Last Name on Card:</td>
+									<td>
+										<input name="ln"/>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Area Code:</td>
+									<td>
+										<input name="dc" size="9" maxlength="9" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Card Type:</td><!-- place label here -->
+									<td><!-- all radio buttons must have the same name so that only on can be selected at a time-->
+										<input type="radio" name="ct" value="visa"/>Visa
+										<input type="radio" name="ct" value="mc"/>Master Card
+										<input type="radio" name="ct" value="dis"/>Discover
+										<input type="radio" name="ct" value="ae"/>American Expess
+										<input type="radio" name="ct" value="Other"/>Other
+									</td><!-- place input field here-->
+								</tr>
+								
+								<tr>
+									<td>Card Number:</td>
+									<td>
+										<input name="dc" size="16" maxlength="16" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Experation date:</td>
+									<td>Month:
+										<select name="espMon"><!--selection list-->
+											<option value="">Choose One</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">4</option>
+											<option value="4">5</option>
+											<option value="5">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										Year:
+										<select name="espYear"><!--selection list-->
+											<option value="">Choose One</option>
+											<option value="19">2019</option>
+											<option value="20">2020</option>
+											<option value="21">2021</option>
+											<option value="22">2022</option>
+											<option value="23">2023</option>
+											<option value="24">2024</option>
+											<option value="25">2025</option>
+											<option value="26">2026</option>
+											<option value="27">2027</option>
+											<option value="28">2028</option>
+											<option value="29">2029</option>
+										</select>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>CVV:</td>
+									<td>
+										<input name="cvv" size="3" maxlength="3" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td><h2>Billing Address:</h2></td>
+								</tr>
+								
+								<tr>
+									<td>Street Address:</td>
+									<td>
+										<input name="sa"/>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>City:</td>
+									<td>
+										<input name="city"/>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>New England-based state:</td>
+									<td>
+										<select name="state"><!--selection list-->
+											<option value="">Choose One</option>
+											<option value="CT">Ct</option>
+											<option value="ME">Me</option>
+											<option value="MA">Ma</option>
+											<option value="NH">Nh</option>
+											<option value="RI">Ri</option>
+										</select>
+									</td>
+								</tr>
+								
+								<tr>
+									<td colspan="2">
+										<input type="submit" name="s" value="Send Data"/>
+										<input type="reset" name="r" value="Clear Form"/>
+									</td>
+								</tr>
+									
+							</table>
+						</form>
+					</td><!--end nested form here-->
+				</tr>
+			</table>
+		</div>	
+		
+		<div class="right" style="background-color:#ccc;">
+
+		</div>
+  
+		<div class="footer">
+			<p>Footer</p>
+		</div>
+	</div>
+	<!-- End grid-container -->
+	
+	
+	
+	
+	
+</div>
+
+</body>
+
+
+</html>
