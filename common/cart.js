@@ -4,6 +4,29 @@ if (document.readyState == 'loading') {
     ready()
 }
 
+function createCart(){
+    
+    var cart = JSON.parse(document.cookie.substring(document.cookie.indexOf('cart=')+5));
+    var cartItems = document.getElementsByClassName('cart-items')[0];
+    
+    for (i=0; i<cart.length; i++){
+        var output = `
+            <div class="cart-item cart-column">
+                <img class="cart-item-image" src="` + cart[i][3] + `" width="100" height="100">
+                <span class="cart-item-title">` + cart[i][0] + `</span>
+            </div>
+            <span class="cart-price cart-column">` + cart[i][1]+`</span>
+            <div class="cart-quantity cart-column">
+                <input class="cart-quantity-input" type="number" value="` + parseInt(cart[i][2]) + `">
+                <button class="btn btn-danger" type="button">REMOVE</button>
+            </div>`;
+        
+        cartItems.innerHTML += output;
+        
+    }
+   
+}
+
 function ready() {
     var removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (var i = 0; i < removeCartItemButtons.length; i++) {
@@ -24,6 +47,8 @@ function ready() {
     }
 
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
+    
+    createCart();
 }
 
 function purchaseClicked() {
@@ -55,16 +80,9 @@ function addToCartClicked(event) {
     var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
     var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
     var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
-    $.ajax({
-        type:"POST",
-        url: "../php/cart.php",
-        data: {action:"add", title: title, price: price, img: imageSrc},
-        success: function(){
-            alert("success");
-        }
-    });
     addItemToCart(title, price, imageSrc)
     updateCartTotal()
+    updateCartCookies();
 }
 
 function addItemToCart(title, price, imageSrc) {
@@ -92,6 +110,7 @@ function addItemToCart(title, price, imageSrc) {
     cartItems.append(cartRow)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
     cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
+    
 }
 
 function updateCartTotal() {
@@ -108,4 +127,26 @@ function updateCartTotal() {
     }
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
+    var cartTotal = document.getElementById('cart-total-price');
+    document.cookie = "cartTotal=" + cartTotal.innerHTML;
+}
+
+function updateCartCookies(){
+    var cartItems = document.getElementsByClassName('cart-item-title');
+    var cartPrices = document.getElementsByClassName('cart-price');
+    var cartQuantities = document.getElementsByClassName('cart-quantity-input');
+    var cartImages = document.getElementsByClassName('shop-item-image');
+    var cookie = new Array();
+    var cookieString = "";
+    for (i=0; i<cartItems.length; i++){
+        var builder = new Array();
+        
+        builder.push(cartItems[i].innerHTML);
+        builder.push(cartPrices[i+1].innerHTML);
+        builder.push(cartQuantities[i].value);
+        builder.push(cartImages[i].src.toString());
+        cookie.push(builder);
+    }
+    cookieString = "cart=" + JSON.stringify(cookie);
+    document.cookie = cookieString;   
 }
