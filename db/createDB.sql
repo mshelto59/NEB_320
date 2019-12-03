@@ -5,15 +5,15 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=1;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema NEB_DB
+-- Schema mshelto_NEB_DB
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `NEB_DB` ;
+DROP SCHEMA IF EXISTS `mshelto_NEB_DB` ;
 
 -- -----------------------------------------------------
--- Schema NEB_DB
+-- Schema mshelto_NEB_DB
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `NEB_DB` DEFAULT CHARACTER SET utf8 ;
-USE `NEB_DB` ;
+CREATE SCHEMA IF NOT EXISTS `mshelto_NEB_DB` DEFAULT CHARACTER SET utf8 ;
+USE `mshelto_NEB_DB` ;
 
 -- -----------------------------------------------------
 -- Table `products`

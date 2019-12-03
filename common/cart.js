@@ -55,6 +55,14 @@ function addToCartClicked(event) {
     var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
     var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
     var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
+    $.ajax({
+        type:"POST",
+        url: "../php/cart.php",
+        data: {action:"add", title: title, price: price, img: imageSrc},
+        success: function(){
+            alert("success");
+        }
+    });
     addItemToCart(title, price, imageSrc)
     updateCartTotal()
 }
@@ -67,7 +75,7 @@ function addItemToCart(title, price, imageSrc) {
     for (var i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == title) {
             alert('This item is already added to the cart')
-            return
+            return;
         }
     }
     var cartRowContents = `
