@@ -20,7 +20,7 @@ switch($action){
         break;
         
     case('login'):
-        $cemail = validateData(cleanData($_POST['cemail']));
+        $cemail = validateData(cleanData($_POST['cemail']),'email');
         $cpassword = validateData(cleanData($_POST['cpassword']));
         
         $checkPasswordQuery = "Select cpassword from customerLogin where cemail = '" . $cemail . "';";

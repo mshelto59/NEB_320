@@ -50,5 +50,14 @@ $('.tab a').on('click', function (e) {
      }
  }
 catch{
+}
     
+try{
+    var valStatus = document.cookie.replace(/(?:(?:^|.*;\s*)BadDataVal\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    if (valStatus == "true"){
+        alert("Data Validation Failed");
+        document.cookie = "BadDataVal=; exipires= Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+}
+catch{
 }
