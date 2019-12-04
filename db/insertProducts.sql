@@ -1,4 +1,4 @@
-use mshelto_neb_db;
+use mshelto_NEB_DB;
 
 delete from products where pid>0;
 

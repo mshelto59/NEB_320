@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS `customerLogin` ;
 
 CREATE TABLE IF NOT EXISTS `customerLogin` (
   `cemail` VARCHAR(45) NOT NULL,
-  `cpassword` VARCHAR(45) NOT NULL,
+  `cpassword` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`cemail`))
 ENGINE = InnoDB;
 
