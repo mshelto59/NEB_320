@@ -5,29 +5,37 @@ if (document.readyState == 'loading') {
 }
 
 function createCart(){
+    try{
+        var cart = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)cart\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
     
-    var cart = JSON.parse(document.cookie.substring(document.cookie.indexOf('cart=')+5));
-    var cartItems = document.getElementsByClassName('cart-items')[0];
-    
-    for (i=0; i<cart.length; i++){
-        var output = `
-            <div class="cart-item cart-column">
-                <img class="cart-item-image" src="` + cart[i][3] + `" width="100" height="100">
-                <span class="cart-item-title">` + cart[i][0] + `</span>
-            </div>
-            <span class="cart-price cart-column">` + cart[i][1]+`</span>
-            <div class="cart-quantity cart-column">
-                <input class="cart-quantity-input" type="number" value="` + parseInt(cart[i][2]) + `">
-                <button class="btn btn-danger" type="button">REMOVE</button>
-            </div>`;
-        
-        cartItems.innerHTML += output;
-        
+        var cartItems = document.getElementsByClassName('cart-items')[0];
+
+        for (i=0; i<cart.length; i++){
+            var output = `
+                <div class="cart-row">
+                    <div class="cart-item cart-column">
+                        <img class="cart-item-image" src="` + cart[i][3] + `" width="100" height="100">
+                        <span class="cart-item-title">` + cart[i][0] + `</span>
+                    </div>
+                    <span class="cart-price cart-column">` + cart[i][1]+`</span>
+                    <div class="cart-quantity cart-column">
+                        <input class="cart-quantity-input" type="number" value="` + parseInt(cart[i][2]) + `">
+                        <button class="btn btn-danger" type="button">REMOVE</button>
+                    </div>
+                </div>`;
+
+            cartItems.innerHTML += output;
+
+        }
+    }
+    catch(error){
+        console.log(error);
     }
    
 }
 
 function ready() {
+    createCart();
     var removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (var i = 0; i < removeCartItemButtons.length; i++) {
         var button = removeCartItemButtons[i]
@@ -48,7 +56,8 @@ function ready() {
 
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
     
-    createCart();
+    
+    updateCartTotal();
 }
 
 function purchaseClicked() {
@@ -63,6 +72,8 @@ function purchaseClicked() {
 function removeCartItem(event) {
     var buttonClicked = event.target
     buttonClicked.parentElement.parentElement.remove()
+    
+    updateCartCookies();    
     updateCartTotal()
 }
 
@@ -135,7 +146,7 @@ function updateCartCookies(){
     var cartItems = document.getElementsByClassName('cart-item-title');
     var cartPrices = document.getElementsByClassName('cart-price');
     var cartQuantities = document.getElementsByClassName('cart-quantity-input');
-    var cartImages = document.getElementsByClassName('shop-item-image');
+    var cartImages = document.getElementsByClassName('cart-item-image');
     var cookie = new Array();
     var cookieString = "";
     for (i=0; i<cartItems.length; i++){

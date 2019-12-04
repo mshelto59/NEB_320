@@ -11,14 +11,11 @@ function runQuery($query){
         die("Connection Failed: " . $connection -> connect_error);
     }
 
-    if($connection->query($query) === true){
-
-    }  
-    else{
-        echo("DB error: " . $connection->error);
-    }
-
+    $result = $connection->query($query);
     $connection->close();
+    return $result;
+
+
 }
 
 ?>

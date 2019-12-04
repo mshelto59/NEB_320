@@ -3,6 +3,7 @@
 <head>
 	<title>NEB e-Commerce</title>
 	<link type="text/css" href="../common/login.css" rel="stylesheet" />
+    <script src="../common/login.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 
@@ -38,7 +39,7 @@
         <div id="signup">   
           <h1>Sign Up for Free</h1>
           
-          <form action="../php/createCust.php" method="post">
+          <form action="../php/Cust.php?action=signup" method="post">
           
           <div class="top-row">
             <div class="field-wrap">
@@ -79,20 +80,20 @@
         <div id="login">   
           <h1>Welcome Back!</h1>
           
-          <form action="/" method="post">
+          <form action="../php/Cust.php?action=login" method="post">
           
             <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off"/>
+            <input type="email"required autocomplete="off" name="cemail"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password"required autocomplete="off" name="cpassword"/>
           </div>
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
