@@ -40,39 +40,77 @@
 								<tr>
 									<td>First Name on Card:</td>
 									<td>
-										<input name="fn" />
+										<input name="fnp" />
 									</td>
 								</tr>
 								
 								<tr>
 									<td>Last Name on Card:</td>
 									<td>
-										<input name="ln"/>
+										<input name="lnp"/>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Street Address:</td>
+									<td>
+										<input name="sap"/>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>City:</td>
+									<td>
+										<input name="cityp"/>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>New England-based state:</td>
+									<td>
+										<select name="statep"><!--selection list-->
+											<option value="">Choose One</option>
+											<option value="CT">Ct</option>
+											<option value="ME">Me</option>
+											<option value="MA">Ma</option>
+											<option value="NH">Nh</option>
+											<option value="RI">Ri</option>
+										</select>
 									</td>
 								</tr>
 								
 								<tr>
 									<td>Area Code:</td>
 									<td>
-										<input name="dc" size="9" maxlength="9" />
+										<input name="Acp" size="9" maxlength="9" />
 									</td>
 								</tr>
 								
 								<tr>
-									<td>Card Type:</td><!-- place label here -->
-									<td><!-- all radio buttons must have the same name so that only on can be selected at a time-->
-										<input type="radio" name="ct" value="visa"/>Visa
-										<input type="radio" name="ct" value="mc"/>Master Card
-										<input type="radio" name="ct" value="dis"/>Discover
-										<input type="radio" name="ct" value="ae"/>American Expess
-										<input type="radio" name="ct" value="Other"/>Other
-									</td><!-- place input field here-->
+									<td>Home Phone:</td>
+									<td>
+										<input name="hpp" size="10" maxlength="10" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Work Phone:</td>
+									<td>
+										<input name="wpp" size="10" maxlength="10" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>E-mail Address:</td>
+									<td>
+										<input name="emailp" />
+									</td>
 								</tr>
 								
 								<tr>
 									<td>Card Number:</td>
 									<td>
-										<input name="dc" size="16" maxlength="16" />
+										<input name="cn" size="16" maxlength="16" />
 									</td>
 								</tr>
 								
@@ -119,27 +157,41 @@
 								</tr>
 								
 								<tr>
-									<td><h2>Billing Address:</h2></td>
+									<td><h2>Mailing Information:</h2></td>
+								</tr>
+								
+								<tr>
+									<td>First Name:</td>
+									<td>
+										<input name="fnm" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Last Name:</td>
+									<td>
+										<input name="lnm"/>
+									</td>
 								</tr>
 								
 								<tr>
 									<td>Street Address:</td>
 									<td>
-										<input name="sa"/>
+										<input name="sam"/>
 									</td>
 								</tr>
 								
 								<tr>
 									<td>City:</td>
 									<td>
-										<input name="city"/>
+										<input name="citym"/>
 									</td>
 								</tr>
 								
 								<tr>
 									<td>New England-based state:</td>
 									<td>
-										<select name="state"><!--selection list-->
+										<select name="statem"><!--selection list-->
 											<option value="">Choose One</option>
 											<option value="CT">Ct</option>
 											<option value="ME">Me</option>
@@ -147,6 +199,34 @@
 											<option value="NH">Nh</option>
 											<option value="RI">Ri</option>
 										</select>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Area Code:</td>
+									<td>
+										<input name="Acm" size="9" maxlength="9" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Home Phone:</td>
+									<td>
+										<input name="hpm" size="10" maxlength="10" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>Work Phone:</td>
+									<td>
+										<input name="wpm" size="10" maxlength="10" />
+									</td>
+								</tr>
+								
+								<tr>
+									<td>E-mail Address:</td>
+									<td>
+										<input name="emailm" />
 									</td>
 								</tr>
 								
