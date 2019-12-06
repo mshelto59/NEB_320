@@ -21,7 +21,7 @@ switch($action){
         
     case('login'):
         $cemail = validateData(cleanData($_POST['cemail']),'email');
-        $cpassword = validateData(cleanData($_POST['cpassword']));
+        $cpassword = validateData(cleanData($_POST['cpassword']), 'none');
         
         $checkPasswordQuery = "Select cpassword from customerLogin where cemail = '" . $cemail . "';";
         $realPassword = runQuery($checkPasswordQuery)->fetch_assoc()['cpassword'];
@@ -62,6 +62,8 @@ function validateData($data, $dataType){
             else{
                 badData();                
             }
+            break;
+        case('none'):
             break;
     }
 }

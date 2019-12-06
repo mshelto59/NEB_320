@@ -12,10 +12,21 @@ function runQuery($query){
     }
 
     $result = $connection->query($query);
+    if(!$result){
+        echo($connection->error);
+    }
+    else{
+        return $result;
+    }
     $connection->close();
-    return $result;
 
 
+}
+
+function countRows($query){
+    $result = runQuery($query);
+    $output = $result->num_rows;
+    return $output;
 }
 
 ?>
