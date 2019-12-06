@@ -20,9 +20,9 @@
 	<!--Side Navigation-->
 	<div class="left">		
 		<div class="sidenav"> 
-			<a href="../index.htm">Home</a>
-			<a href="about.htm">About</a>
-			<a href="payment.htm">Payment</a>
+			<a href="../index.php">Home</a>
+			<a href="about.htm.php">About</a>
+			<a href="payment.htm.php">Payment</a>
 			<a href="#">Login</a>
 		</div>
 	</div>

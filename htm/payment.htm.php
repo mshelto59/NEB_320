@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,8 @@
     <script type="text/javascript" src="../common/payment.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-
 </head>
 <body>
-	
 	<div class="grid-container">
 		<div class ="header">
 			<h1>Burlington Bikes</h1>
@@ -19,13 +18,15 @@
 		<!--Side Navigation-->
 		<div class="left">		
 			<div class="sidenav"> 
-				<a href="../index.htm">Home</a>
-				<a href="./cart.htm">Cart</a>
+				<a href="../index.php">Home</a>
+				<a href="./cart.htm.php">Cart</a>
 				<a href="#">Payment</a>
-				<a href="./login.htm">Login</a>
+				<a href="./login.htm.php">Login</a>
 			</div>
 		</div>
-		
+		<?php
+        if(isset($_SESSION['username'])){
+        echo('
 		<div class="middle1" style="background-color:#ffffff;">
 			<table id="main_tbl">
 				<tr>
@@ -245,7 +246,24 @@
 				</tr>
 			</table>
 		</div>	
-		
+		');
+        }
+        else{
+            echo('
+            <div class="middle1" style="background-color:#ffffff;">
+                <table id="main_tbl">
+                    <tr>
+                        <td id="title" colspan="3" class="row_ht">
+                            Please log in first.
+                            </br>
+                            <button type="button" onclick="window.location.href=`login.htm.php`">Login</button>
+                            
+                        </td>
+                    </tr>
+                </table>
+            </div>');
+        }
+        ?>
 		<div class="right" style="background-color:#ccc;">
 
 		</div>

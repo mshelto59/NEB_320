@@ -13,10 +13,10 @@
 <body>
 <header>NEB e-Commerce</header>
 <div id="navbar"> 
-	<a href="../index.htm">Home</a>
+	<a href="../index.php">Home</a>
 	<a href="#">Cart</a>
-	<a href="./payment.htm">Payment</a>
-	<a href="./login.htm">Login</a>
+	<a href="./payment.htm.php">Payment</a>
+	<a href="./login.htm.php">Login</a>
 	
 	
 	<div class="right" >

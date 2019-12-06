@@ -22,9 +22,9 @@
 	<div class="left">		
 		<div class="sidenav"> 
 			<a href="#">Home</a>
-			<a href="./htm/about.htm">About</a>
-			<a href="./htm/payment.htm">Payment</a>
-			<a href="./htm/login.htm">Login</a>
+			<a href="./htm/about.htm.php">About</a>
+			<a href="./htm/payment.htm.php">Payment</a>
+			<a href="./htm/login.htm.php">Login</a>
 		</div>
 	</div>
 	

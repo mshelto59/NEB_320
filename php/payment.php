@@ -1,5 +1,8 @@
 <?php
+session_start();
 require('dbConnect.php');
+
+$username = $_SESSION['username'];
 
 $fn = $_POST['fnp'];
 $ln = $_POST['lnp'];
@@ -46,7 +49,7 @@ $paymentQuery->bind_param('ssiissi', $fn, $ln, $cn, $cvv, $mon, $year, $CIID);
 
 
 if($checkPContact != 0 || $checkPayment != 0){
-    header("Location: ../htm/payment.htm");
+    header("Location: ../htm/payment.htm.php");
     setcookie("BadPaymentInfo", "true", time()+3600, '/');
 }
 else{
@@ -71,5 +74,5 @@ else{
     
     $PContactQuery->execute();
     
-    header("Location: ../index.htm");
+    header("Location: ../index.php");
 }
