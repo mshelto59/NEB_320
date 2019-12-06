@@ -25,8 +25,9 @@ switch($action){
         
         $checkPasswordQuery = "Select cpassword from customerLogin where cemail = '" . $cemail . "';";
         $realPassword = runQuery($checkPasswordQuery)->fetch_assoc()['cpassword'];
-        echo($realPassword);
-        if(password_verify($cpassword, $realPassword) == true){            
+        echo($realPassword."\n");
+        echo($cpassword);
+        if(password_verify($cpassword, $realPassword)){            
             header("Location: ../htm/payment.htm");
         }
         else{         
@@ -64,7 +65,7 @@ function validateData($data, $dataType){
             }
             break;
         case('none'):
-            break;
+            return $data;
     }
 }
 

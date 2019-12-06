@@ -5,15 +5,15 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema NEB_DB
+-- Schema mshelto_NEB_DB
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `NEB_DB` ;
+DROP SCHEMA IF EXISTS `mshelto_NEB_DB` ;
 
 -- -----------------------------------------------------
--- Schema NEB_DB
+-- Schema mshelto_NEB_DB
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `NEB_DB` DEFAULT CHARACTER SET utf8 ;
-USE `NEB_DB` ;
+CREATE SCHEMA IF NOT EXISTS `mshelto_NEB_DB` DEFAULT CHARACTER SET utf8 ;
+USE `mshelto_NEB_DB` ;
 
 -- -----------------------------------------------------
 -- Table `products`
@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS `customerLogin` ;
 
 CREATE TABLE IF NOT EXISTS `customerLogin` (
   `cemail` VARCHAR(45) NOT NULL,
-  `cpassword` VARCHAR(45) NOT NULL,
+  `cpassword` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`cemail`))
 ENGINE = InnoDB;
 
@@ -88,8 +88,8 @@ CREATE TABLE IF NOT EXISTS `paymentCard` (
   `pln` VARCHAR(255) NOT NULL,
   `pnumber` INT(16) NOT NULL,
   `pcvv` INT(3) NOT NULL,
-  `month` VARCHAR(45) NOT NULL,
-  `year` VARCHAR(45) NOT NULL,
+  `Month` VARCHAR(45) NOT NULL,
+  `Year` VARCHAR(45) NOT NULL,
   `CIID` INT NOT NULL,
   PRIMARY KEY (`pid`),
   INDEX `fk_paymentCard_Address1_idx` (`CIID` ASC),
