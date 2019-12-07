@@ -65,7 +65,7 @@ function ready() {
 }
 
 function purchaseClicked() {
-    window.location.href = "htm/login.htm.php"
+    window.location.href = "htm/payment.htm.php"
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild)

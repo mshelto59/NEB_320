@@ -136,13 +136,14 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `orders_has_products`
+-- Table `orderProducts`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `orders_has_products` ;
+DROP TABLE IF EXISTS `orderProducts` ;
 
-CREATE TABLE IF NOT EXISTS `orders_has_products` (
+CREATE TABLE IF NOT EXISTS `orderProducts` (
   `oid` INT NOT NULL,
   `pid` INT NOT NULL,
+  `count` INT NOT NULL,
   PRIMARY KEY (`oid`, `pid`),
   INDEX `fk_orders_has_products_products1_idx` (`pid` ASC),
   INDEX `fk_orders_has_products_orders1_idx` (`oid` ASC),

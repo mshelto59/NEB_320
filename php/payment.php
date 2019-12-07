@@ -102,6 +102,27 @@ $OrderQuery = $connection->prepare("Insert into orders (cemail, date, count, pid
 $OrderQuery->bind_param('sii', $email, $cartLen, $pid);
 
 $OrderQuery->execute();
-echo($OrderQuery->error);
+
+//insert into orderProducts
+$OPQuery = $connection->prepare("Insert into orderProducts values (?,?,?);");
+$OPQuery->bind_param('iii', $oid, $pid2, $qty);
+
+//get cart cookies
+$cart = json_decode($_COOKIE['cart']);
+
+//get order id that we just created
+$oid = runQuery("Select oid from orders where cemail='$email' and count='$cartLen' and pid='$pid' and CIID='$CIID' order by oid desc;")->fetch_row()[0];
+
+//get info for table and insert info into orderProducts
+for($i=0; $i< count($cart); $i++){
+    $pname=$cart[$i][0];
+    $pprice = $cart[$i][1];
+    $pid2 = runQuery("Select pid from products where pname='$pname' and pprice='".substr($pprice,1) ."';")->fetch_row()[0];
+    $qty = $cart[$i][2];        
+    $OPQuery->execute();
+    echo($OPQuery->error);
+}
+
+//redirect into completed page
 header("Location: ../htm/completed.htm.php");
 
