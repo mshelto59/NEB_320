@@ -4,6 +4,9 @@ require('dbConnect.php');
 
 $username = $_SESSION['username'];
 
+$cartLen = $_COOKIE['cartLen'];
+
+//vars from payment section of form
 $fn = $_POST['fnp'];
 $ln = $_POST['lnp'];
 $sa = $_POST['sap'];
@@ -18,61 +21,87 @@ $mon = $_POST['espMon'];
 $year = $_POST['espYear'];
 $cvv = $_POST['cvv'];
 
-    
+//prepare sql statements and gather data to see if info is already in database.    
 $checkPContactQuery = $connection->prepare("Select CIID from ContactInfo where street=? and city= ? and st= ? and zip= ? and HomePhone= ? and WorkPhone=?;");
-
 $checkPContactQuery->bind_param("sssiii", $sa, $city, $state, $zip, $hp, $wp);
 
 $checkPContactQuery->execute();
-
 $checkPContactResult = $checkPContactQuery->get_result();
-
 $checkPContact = $checkPContactResult->num_rows;
 
 $PContactQuery = $connection->prepare("Insert into ContactInfo (street,city,st,zip,HomePhone,WorkPhone) values(?,?,?,?,?,?);");
-
 $PContactQuery->bind_param('ssssii', $sa, $city, $state, $zip, $hp, $wp);
 
 $checkPaymentQuery = $connection->prepare("Select pid from paymentCard where pfn=? and pln=? and pnumber=? and pcvv=? and month=? and year=?;");
-
 $checkPaymentQuery->bind_param('ssiiss', $fn, $ln, $cn, $cvv, $mon, $year);
-
 $checkPaymentQuery->execute();
 
-$checkPayment = $checkPaymentQuery->get_result()->num_rows;
+$checkPaymentResult = $checkPaymentQuery->get_result();
+$checkPayment = $checkPaymentResult->num_rows;
     
 $paymentQuery = $connection->prepare("Insert into paymentCard (pfn,pln,pnumber,pcvv,month,year,CIID) values (?,?,?,?,?,?,?);");
-
-$CIID= $checkPContactResult->fetch_row()[0];
-
 $paymentQuery->bind_param('ssiissi', $fn, $ln, $cn, $cvv, $mon, $year, $CIID);
 
-
-if($checkPContact != 0 || $checkPayment != 0){
-    header("Location: ../htm/payment.htm.php");
-    setcookie("BadPaymentInfo", "true", time()+3600, '/');
+//if data is already in database get IDs and continue
+if($checkPContact > 0 && $checkPayment > 0){
+    $CIID = $checkPContactResult->fetch_row()[0];
+    $pid = $checkPaymentResult->fetch_row()[0];
 }
-else{
+//if data for ContactInfo is not in db (but payment might be) insert it and then get the CIID.
+else if ($checkPContact ==0){
     $PContactQuery->execute();
     
     $checkPContactQuery->execute();
 
     $checkPContactResult = $checkPContactQuery->get_result();
+    $checkPContact = $checkPContactResult->num_rows;
     
     $CIID= $checkPContactResult->fetch_row()[0];
-    $paymentQuery->execute();
-    
-    $fn = $_POST['fnm'];
-    $ln = $_POST['lnm'];
-    $sa = $_POST['sam'];
-    $city = $_POST['citym'];
-    $state = $_POST['statem'];
-    $zip = $_POST['Acm'];
-    $hp = $_POST['hpm'];
-    $wp = $_POST['wpm'];
-    $email = $_POST['emailm'];
-    
-    $PContactQuery->execute();
-    
-    header("Location: ../index.php");
 }
+// if payment is not in db (contact info might be) insert if and then get the Pid
+if($checkPayment == 0){
+    //insert payment info using CIID for payment address
+    $paymentQuery->execute();
+    $checkPaymentQuery->execute();
+    $checkPaymentResult = $checkPaymentQuery->get_result();
+    
+    $pid = $checkPaymentResult->fetch_row()[0];
+}
+//data for mailing address from form
+$fn = $_POST['fnm'];
+$ln = $_POST['lnm'];
+$sa = $_POST['sam'];
+$city = $_POST['citym'];
+$state = $_POST['statem'];
+$zip = $_POST['Acm'];
+$hp = $_POST['hpm'];
+$wp = $_POST['wpm'];
+$email = $_POST['emailm'];
+
+$checkPContactQuery->execute();
+$checkPContactResult = $checkPContactQuery->get_result();
+$checkPContact = $checkPContactResult->num_rows;
+
+//if contact info is alreay in DB get the CCID.
+if($checkPContact > 0){    
+    $CIID = $checkPContactResult->fetch_row()[0];
+
+}
+//if it is not in the DB, insert it
+else{
+    $PContactQuery->execute();
+    $checkPContactQuery->execute();
+
+    $checkPContactResult = $checkPContactQuery->get_result();
+    $CIID = $checkPContactResult->fetch_row()[0];
+}
+
+
+//insert order using mailing CIID and payment pid
+$OrderQuery = $connection->prepare("Insert into orders (cemail, date, count, pid, CIID) values (?,now(), ?, ?, $CIID);");
+$OrderQuery->bind_param('sii', $email, $cartLen, $pid);
+
+$OrderQuery->execute();
+echo($OrderQuery->error);
+header("Location: ../htm/completed.htm.php");
+

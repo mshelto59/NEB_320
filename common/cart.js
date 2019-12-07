@@ -7,10 +7,14 @@ if (document.readyState == 'loading') {
 function createCart(){
     try{
         var cart = JSON.parse(document.cookie.replace(/(?:(?:^|.*;\s*)cart\s*\=\s*([^;]*).*$)|^.*$/, "$1"));
-    
+        
+        var cartLen = cart.length;
+        
+        document.cookie = "cartLen=" + cartLen;
+        
         var cartItems = document.getElementsByClassName('cart-items')[0];
 
-        for (i=0; i<cart.length; i++){
+        for (i=0; i<cartLen; i++){
             var output = `
                 <div class="cart-row">
                     <div class="cart-item cart-column">
@@ -61,7 +65,7 @@ function ready() {
 }
 
 function purchaseClicked() {
-    window.location.href = "htm/login.htm"
+    window.location.href = "htm/login.htm.php"
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild)

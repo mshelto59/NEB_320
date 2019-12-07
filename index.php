@@ -123,7 +123,7 @@
                 <span class="cart-total-price" id="cart-total-price">$0</span>
             </div>
             <button class="btn btn-primary btn-purchase" type="button">CHECKOUT</button>
-		</div><!--WILL NEED A WAY TO COMUNICATE IF A BIKE I SELECTED TO THE PAYMENT AND CART PAGES-->
+		</div>
   
 		<div class="footer">
 			<p>&copy; 2019 Burlington Bikes<p>

@@ -28,13 +28,7 @@
 	</div>
 	
 	<div class="middle1" >	
-		<div class="form">
-      
-      <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
-      </ul>
-      
+		<div class="form">      
       <div class="tab-content">
         <div id="signup">   
           <h1>Sign Up for Free</h1>
