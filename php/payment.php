@@ -15,7 +15,6 @@ $state = $_POST['statep'];
 $zip = $_POST['Acp'];
 $hp = $_POST['hpp'];
 $wp = $_POST['wpp'];
-$email = $_POST['emailp'];
 $cn = $_POST['cn'];
 $mon = $_POST['espMon'];
 $year = $_POST['espYear'];
@@ -76,7 +75,6 @@ $state = $_POST['statem'];
 $zip = $_POST['Acm'];
 $hp = $_POST['hpm'];
 $wp = $_POST['wpm'];
-$email = $_POST['emailm'];
 
 $checkPContactQuery->execute();
 $checkPContactResult = $checkPContactQuery->get_result();
@@ -99,7 +97,7 @@ else{
 
 //insert order using mailing CIID and payment pid
 $OrderQuery = $connection->prepare("Insert into orders (cemail, date, count, pid, CIID) values (?,now(), ?, ?, $CIID);");
-$OrderQuery->bind_param('sii', $email, $cartLen, $pid);
+$OrderQuery->bind_param('sii', $username, $cartLen, $pid);
 
 $OrderQuery->execute();
 
@@ -111,7 +109,7 @@ $OPQuery->bind_param('iii', $oid, $pid2, $qty);
 $cart = json_decode($_COOKIE['cart']);
 
 //get order id that we just created
-$oid = runQuery("Select oid from orders where cemail='$email' and count='$cartLen' and pid='$pid' and CIID='$CIID' order by oid desc;")->fetch_row()[0];
+$oid = runQuery("Select oid from orders where cemail='$username' and count='$cartLen' and pid='$pid' and CIID='$CIID' order by oid desc;")->fetch_row()[0];
 
 //get info for table and insert info into orderProducts
 for($i=0; $i< count($cart); $i++){
