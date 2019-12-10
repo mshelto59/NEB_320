@@ -2,7 +2,7 @@
 
 html,body /* Controls overall style of the web site */
 {
-	font-family:verdana;
+	font-family: georgian;
 	font-size:12pt;
 	width:100%;
 	height:100%;
@@ -11,9 +11,6 @@ html,body /* Controls overall style of the web site */
 	margin:0px;
 }
 
-/* This is a style sheet to control grid layout.
-   Use this with grid.htm file.
-*/
 
 /* the '*' below is shorthand for 'select all elements' */
 * {
@@ -306,17 +303,19 @@ p{
 @media (max-width: 600px) {
 .grid-container  
 	{
-	grid-template-areas: 
+  	grid-template-areas: 
 	  'header header header' 
 	  'left left left' 
 	  'middle1 middle1 middle1'
 	  'right right right ' 
 	  'footer footer footer';
+	  grid-gap: 50px;
 	}
 .middle1
 	{
 		grid-area:middle1;
 		background-image:linear-gradient(to right, #6B0EB2 , #400CB2);
+		
 		
 	} 
 

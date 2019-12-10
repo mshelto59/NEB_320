@@ -213,4 +213,52 @@ textarea {
 .forgot {
   margin-top:-20px;
   text-align:right;
+  color: #fff;
 }
+
+/*The grid container */
+.grid-container {
+  display: grid;
+  height: 100%;
+  grid-template-areas: 
+    'header header header' 
+    'left middle1 right' 
+    'footer footer footer';
+   /*grid-column-gap: 10px;  if you want gap between the columns*/
+} 
+
+.left,
+.middle1,,
+.right {
+  padding: 10px;
+  
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+  width: 200px;
+}
+
+ /*Style the middle column */
+.middle {
+  grid-area: middle;
+  width: auto;
+  
+}
+
+/* Style the right column */
+.right {
+  grid-area: right; 
+  
+}
+
+/* Style the footer */
+.footer {
+  grid-area: footer;
+  background-color: #fff;
+  padding: 10px;
+  text-align: center;
+  
+}
+

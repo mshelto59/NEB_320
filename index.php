@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+	<script src="./common/jquery-3.4.1.min.js"></script>
 
 </head>
 
@@ -20,15 +21,17 @@
  
 	<!--Side Navigation-->
 	<div class="left">		
-		<div class="sidenav"> 
+		<div class="sidenav">			
 			<a href="#">Home</a>
 			<a href="./htm/about.htm.php">About</a>
 			<a href="./htm/payment.htm.php">Payment</a>
 			<a href="./htm/login.htm.php">Login</a>
+			</ul>
 		</div>
 	</div>
 	
 	<!--Bikes shop-item-->
+	<!-- Code taken from https://www.youtube.com/watch?v=YeFzkC2awTM -->
 	<div class="middle1" >
 		<div class="shop-item">
 			<a target="_blank" href="./assets/images/bike1.png">
@@ -126,11 +129,12 @@
 		</div>
   
 		<div class="footer">
-			<p>&copy; 2019 Burlington Bikes<p>
+			<p style ="color:#000;">&copy; 2019 Burlington Bikes<p>
 		</div>
 	</div>
-	<!-- End grid-container
-https://www.youtube.com/watch?v=YeFzkC2awTM	-->
+	
+	<!-- End grid-container-->
+
 
 
 

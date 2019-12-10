@@ -6,6 +6,8 @@
 	<link type="text/css" href="../common/styles.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../common/payment.js"></script>
+	<script type="text/javascript" src="../common/payment_form_val.js"></script>
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 </head>
@@ -235,7 +237,7 @@
 								
 								<tr>
 									<td colspan="2">
-										<input type="submit" name="s" value="Send Data"/>
+										<input type="submit" name="s" value="Send Data" onsubmit="val_data()"/>
 										<input type="reset" name="r" value="Clear Form"/>
 									</td>
 								</tr>
@@ -269,7 +271,7 @@
 		</div>
   
 		<div class="footer">
-			<p>Footer</p>
+			<p style ="color:#000;">&copy; 2019 Burlington Bikes<p>
 		</div>
 	</div>
 	<!-- End grid-container -->
