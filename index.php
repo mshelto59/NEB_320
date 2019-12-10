@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>NEB e-Commerce</title>
+<?php include("./htm/header1.inc");?>
 	<link type="text/css" href="./common/styles.css" rel="stylesheet" />
 	<script type="text/javascript" src="./common/cart.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 	<script src="./common/jquery-3.4.1.min.js"></script>
 
 </head>

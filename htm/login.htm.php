@@ -1,32 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>NEB e-Commerce</title>
+<?php include("header1.inc");?>
 	<link type="text/css" href="../common/login.css" rel="stylesheet" />
     <script src="../common/login.js"></script>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-
-</head>
-
-<body>
-<!-- Start grid-container here -->
-<div class="grid-container">
-	<!--Header-->
-	<div class ="header">
-		<h1>Burlington Bikes</h1>
-	</div>
- 
-	<!--Side Navigation-->
-	<div class="left">		
-		<div class="sidenav"> 
-			<a href="../index.php">Home</a>
-			<a href="about.htm.php">About</a>
-			<a href="payment.htm.php">Payment</a>
-			<a href="#">Login</a>
-		</div>
-	</div>
 	
+<?php include("body1.inc");?>
 	<div class="middle1" >	
 		<div class="form">      
 			<div class="tab-content">
@@ -102,12 +78,4 @@
 	<div class="right" >
 	</div>
 	
-		<div class="footer">
-			<p style ="color:#000;">&copy; 2019 Burlington Bikes<p>
-		</div>
-		</div>
-   
-</body>
-
-
-</html>
+<?php include("footer1.inc");?>

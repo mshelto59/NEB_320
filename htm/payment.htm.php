@@ -1,31 +1,10 @@
 <?php session_start()?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>NEB e-Commerce</title>
+<?php include("header1.inc");?>
 	<link type="text/css" href="../common/styles.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../common/payment.js"></script>
 	<script type="text/javascript" src="../common/payment_form_val.js"></script>
-	
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-</head>
-<body>
-	<div class="grid-container">
-		<div class ="header">
-			<h1>Burlington Bikes</h1>
-		</div>
-	 
-		<!--Side Navigation-->
-		<div class="left">		
-			<div class="sidenav"> 
-				<a href="../index.php">Home</a>
-				<a href="./cart.htm.php">Cart</a>
-				<a href="#">Payment</a>
-				<a href="./login.htm.php">Login</a>
-			</div>
-		</div>
+<?php include("body1.inc");?>
 		<?php
         if(isset($_SESSION['username'])){
         echo('
@@ -255,20 +234,4 @@
 		<div class="right" style="background-color:#ccc;">
 
 		</div>
-  
-		<div class="footer">
-			<p style ="color:#000;">&copy; 2019 Burlington Bikes<p>
-		</div>
-	</div>
-	<!-- End grid-container -->
-	
-	
-	
-	
-	
-</div>
-
-</body>
-
-
-</html>
+<?php include("footer1.inc");?>

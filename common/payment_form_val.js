@@ -1,6 +1,5 @@
 function val_data(){
-	
-	//Connot collect input from payment.htm.php because it is a php file. Tried to put form in payment.htm which would then load into payment.htm.php
+
 	var RegExpText = /^[A-Z a-z]+$/;
 	var RegExpSt = /^[A-Z]{2}$/;
 	var RegExpZip = /^[0-9]{5}$/;

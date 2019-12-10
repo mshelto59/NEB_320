@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>NEB e-Commerce</title>
-	<link type="text/css" href="../common/styles.css" rel="stylesheet" />
-	<meta charset="UTF-8">
-	<script type="text/javascript" src="./common/cart.js" async></script>
+<?php include("header1.inc");?>
+<link type="text/css" href="../common/styles.css" rel="stylesheet" />
+		<script type="text/javascript" src="./common/cart.js" async></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 
-</head>
-
-<body>
-<header>NEB e-Commerce</header>
-<div id="navbar"> 
-	<a href="../index.php">Home</a>
-	<a href="#">Cart</a>
-	<a href="./payment.htm.php">Payment</a>
-	<a href="./login.htm.php">Login</a>
-	
-	
+<?php include("body1.inc");?>
 	<div class="right" >
 			<p> Burlington Bikes has been a staple in the Vermont cycling community for over 60 years.
 				Our dedication to exceptional customer service and quality bike repairs has landed us a place as one of the 
@@ -41,14 +27,4 @@
             </div>
             <button class="btn btn-primary btn-purchase" type="button">CHECKOUT</button>
 	</div>
-	
-	
-	
-	
-	
-</div>
-
-</body>
-
-
-</html>
+<?php include("footer1.inc");?>
