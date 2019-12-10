@@ -7,18 +7,18 @@ $username = $_SESSION['username'];
 $cartLen = $_COOKIE['cartLen'];
 
 //vars from payment section of form
-$fn = $_POST['fnp'];
-$ln = $_POST['lnp'];
-$sa = $_POST['sap'];
-$city = $_POST['cityp'];
-$state = $_POST['statep'];
-$zip = $_POST['Acp'];
-$hp = $_POST['hpp'];
-$wp = $_POST['wpp'];
-$cn = $_POST['cn'];
-$mon = $_POST['espMon'];
-$year = $_POST['espYear'];
-$cvv = $_POST['cvv'];
+$fn = valData(cleanData($_POST['fnp']), "text");
+$ln = valData(cleanData($_POST['lnp']), "text");
+$sa = valData(cleanData($_POST['sap']), "numText");
+$city = valData(cleanData($_POST['cityp']), "text");
+$state = valData(cleanData($_POST['statep']), "st");
+$zip = valData(cleanData($_POST['Acp']), "zip");
+$hp = valData(cleanData($_POST['hpp']), "phone");
+$wp = valData(cleanData($_POST['wpp']), "phone");
+$cn = valData(cleanData($_POST['cn']), "card");
+$mon = valData(cleanData($_POST['espMon']), "month");
+$year = valData(cleanData($_POST['espYear']), "year");
+$cvv = valData(cleanData($_POST['cvv']), "cvv");
 
 //prepare sql statements and gather data to see if info is already in database.    
 $checkPContactQuery = $connection->prepare("Select CIID from ContactInfo where street=? and city= ? and st= ? and zip= ? and HomePhone= ? and WorkPhone=?;");
@@ -67,14 +67,14 @@ if($checkPayment == 0){
     $pid = $checkPaymentResult->fetch_row()[0];
 }
 //data for mailing address from form
-$fn = $_POST['fnm'];
-$ln = $_POST['lnm'];
-$sa = $_POST['sam'];
-$city = $_POST['citym'];
-$state = $_POST['statem'];
-$zip = $_POST['Acm'];
-$hp = $_POST['hpm'];
-$wp = $_POST['wpm'];
+$fn = valData(cleanData($_POST['fnm']), "text");
+$ln = valData(cleanData($_POST['lnm']), "text");
+$sa = valData(cleanData($_POST['sam']), "numText");
+$city = valData(cleanData($_POST['citym']), "text");
+$state = valData(cleanData($_POST['statem']), "st");
+$zip = valData(cleanData($_POST['Acm']), "zip");
+$hp = valData(cleanData($_POST['hpm']), "phone");
+$wp = valData(cleanData($_POST['wpm']), "phone");
 
 $checkPContactQuery->execute();
 $checkPContactResult = $checkPContactQuery->get_result();
@@ -124,3 +124,114 @@ for($i=0; $i< count($cart); $i++){
 //redirect into completed page
 header("Location: ../htm/completed.htm.php");
 
+function cleanData($input){
+    $output = htmlspecialchars(stripslashes($input));
+    return $output;
+}
+
+function valData($input, $dataType){
+    $output = "";
+    
+    $textREGEX = '/^[A-Za-z ]*$/';
+    $numTextREGEX = '/^[A-Za-z0-9 ]*$/';
+    $stREGEX = '/^(CT|ME|MA|NH|RI)$/';
+    $phoneREGEX = '/^[0-9]{10}$/';
+    $cardREGEX = '/^[0-9]{16}$/';
+    $monthREGEX = '/^[1-9]|1[0-2]$/';
+    $yearREGEX = '/^[1-2][0-9]$/';
+    $cvvREGEX = '/^[0-9]*$/';
+    $zipREGEX = '/^[0-9]{5}$/';
+    
+    switch($dataType){
+        case "text":
+             if (preg_match($textREGEX, $input)){
+                return $input;
+            }
+            else{
+                badData();                
+            }
+        break;
+            
+        case "numText":
+            if (preg_match($numTextREGEX, $input)){
+                return $input;
+            }
+            else{
+                badData();                
+            }
+        break;
+            
+        case "st":
+            if (preg_match($stREGEX, $input)){
+                return $input;
+            }
+            else{
+              badData();                
+            }
+        break;
+            
+        case "phone":
+            if (preg_match($phoneREGEX, $input)){
+                return $input;
+            }
+            else{
+              badData();                
+            }
+        break;
+            
+        case "card":
+            if (preg_match($cardREGEX, $input)){
+                return $input;
+            }
+            else{
+               badData();                
+            }
+        break;
+            
+        case "month":
+            if (preg_match($monthREGEX, $input)){
+                return $input;
+            }
+            else{
+               badData();                
+            }
+        break;
+        
+        case "year":
+            if (preg_match($yearREGEX, $input)){
+                return $input;
+            }
+            else{
+                echo($input);
+                badData();                
+            }
+        break;
+            
+        case "cvv":
+            if (preg_match($cvvREGEX, $input)){
+                return $input;
+            }
+            else{
+               badData();                
+            }
+        break;
+            
+        case "zip":
+            if (preg_match($zipREGEX, $input)){
+                return $input;
+            }
+            else{
+              badData();                
+            }
+        break;
+    }
+    
+    
+}
+
+function badData(){
+    setcookie("BadPaymentInfo" , "true", time()+3600, '/');
+    header("Location: ../htm/payment.htm.php");
+}
+
+?>

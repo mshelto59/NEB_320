@@ -106,13 +106,6 @@
 								</tr>
 								
 								<tr>
-									<td>E-mail Address:</td>
-									<td>
-										<input name="emailp" />
-									</td>
-								</tr>
-								
-								<tr>
 									<td>Card Number:</td>
 									<td>
 										<input name="cn" size="16" maxlength="16" />
@@ -225,13 +218,6 @@
 									<td>Work Phone:</td>
 									<td>
 										<input name="wpm" size="10" maxlength="10" />
-									</td>
-								</tr>
-								
-								<tr>
-									<td>E-mail Address:</td>
-									<td>
-										<input name="emailm" />
 									</td>
 								</tr>
 								
